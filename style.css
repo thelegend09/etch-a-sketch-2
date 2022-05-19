@@ -1,0 +1,150 @@
+:root {
+    --turquoise-green: #b9e3c6ff;
+    --ocean-green: #59c9a5ff;
+    --ruby: #d81e5bff;
+    --prussian-blue: #23395bff;
+    --canary: #fffd98ff;
+    --blue-yonder: #586ba4ff;
+    --dark-cornflower-blue: #324376ff;
+    --buff: #f5dd90ff;
+    --atomic-tangerine: #f68e5fff;
+    --bittersweet: #f76c5eff;
+}
+
+body {
+    font-family: "Roboto Flex";
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    gap: 50px
+}
+
+h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    padding: 24px 0 0 0;
+    /* text-decoration: underline; */
+}
+
+
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0 0 0 0px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 150px;
+    margin-bottom: 0;
+}
+
+.sidebar li {
+    font-size: 22px;
+    padding-bottom: 15px;
+}
+
+
+.modifier-keys-section p {
+    font-size: 13px;
+}
+
+
+.modifier-keys-section li {
+    font-size: 12px;
+    /* display: inline; */
+    /* grid-column: 3; */
+}
+
+
+
+/* colors */
+/* #586ba4, #324376, #f5dd90, #f68e5f, #f76c5e */
+/*  #b9e3c6, #59c9a5, #d81e5b, #23395b, #fffd98 */
+
+.pen-color-1 {
+    color: #59c9a5;
+}
+
+.pen-color-2 {
+    color: #d81e5b;
+}
+
+.pen-color-3 {
+    color: #f68e5f;
+}
+
+.pen-color-4 {
+    color: #586ba4;
+}
+
+.pen-color-5 {
+    color: #b9e3c6;
+}
+
+.pen-color-6 {
+    color: #f5dd90;
+}
+
+.pen-color-7 {
+    color: #3DA35D;
+}
+
+
+.grid-color-1 {
+    color: #273043;
+}
+
+.grid-color-2 {
+    color: #371E30;
+}
+
+.grid-color-3 {
+    color: #134611;
+}
+
+
+
+/* button */
+/* From uiverse.io by @alexroumi */
+.btn {
+    padding: 5px 10px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 12px;
+    /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); */
+    transition: all 250ms;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); */
+    transition: all 250ms
+}
+
+.btn:hover {
+    color: #e8e8e8;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
