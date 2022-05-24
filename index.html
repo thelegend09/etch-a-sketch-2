@@ -37,7 +37,7 @@
 
                 </ul>
 
-                <button class="btn">Use random color</button>
+                <button class="btn random-color">Use random color</button>
             </div>
             <div class="grid-section">
                 <h1>Grid</h1>
@@ -50,23 +50,24 @@
             </div>
             <div class="slidecontainer">
                 <h1>Grid size</h1>
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <input type="range" min="4" max="100" value="10" class="slider" id="myRange">
               </div>
             
-            <div class="modifier-keys-section">
+            <div class="modifier-keys-section greyed-out">
                 <h1>Modifier Keys</h1>
-                <p>Control and Shift will hold previous colors.</p>
+                <p>Control and Shift will hold previously selected colors.</p>
                 <ul>
-                    <li>Shift: <i class="fa-solid fa-circle"></i></li>
-                    <li>Control: <i class="fa-solid fa-circle"></i></li>
+                    <li>Shift: <i class="twice-removed-color fa-solid fa-circle"></i></li>
+                    <li>Control: <i class="previous-color fa-solid fa-circle"></i></li>
                 </ul>
-                <button class="btn mod-keys">Use modifier keys</button>
+                <button class="btn mod-keys">Toggle modifier keys</button>
             </div>
             <div class="copyright">© Olivier Legendre</div>
         </div>
 
         <div class="grid-container">
-            <div class="text-to-disapear">
+
+            <div style="display: none;" class="text-to-disapear">
                 <p class="huge-title">etch a sketch!</p>
                 <p class="sub-title">Click to start</p>
             </div>

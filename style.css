@@ -14,10 +14,13 @@
 main {
     height: 100vh;
     display:flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 body {
     font-family: "Roboto Flex";
+    color: rgb(0, 0, 0);
 }
 
 .sidebar {
@@ -25,7 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 200px;
-    gap: 50px
+    gap: 20px
 }
 
 h1 {
@@ -71,7 +74,7 @@ h1 {
 
 /* For when the modifier keys are inactive */
 .greyed-out {
-    color: grey
+    color: #808080;
 }
 
 .grid-container .huge-title {
@@ -87,6 +90,42 @@ h1 {
     font-size: 20px;
     text-transform: uppercase;
 }
+
+.grid-item {
+    background-color: white;
+}
+
+.grid-container {
+    display: grid;
+    width: 600px;
+    height: 600px;
+    background-color: black;
+    margin: 0 auto;
+    padding: 0;
+    outline: 1px solid black;
+    /* grid-template-columns: "auto"; */
+}
+
+/* .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+} */
+
+
+
+
+/* colors */
+.grid-item:hover {
+    background-color: #B4656F;
+}
+
+.grid-item {
+    background-color: white;
+}
+
+
 
 /* colors */
 
@@ -108,12 +147,51 @@ h1 {
 
 
 
-/* .modifier-keys-section {
-    display: inline;
-    padding-right: 50px;
-} */
 
-/* button */
+
+
+
+/* SLIDER */
+/* https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+.slidecontainer {
+    width: 70%;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 25%;
+    background: var(--ocean-green);
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 25%;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+
+/* BUTTON */
 /* From uiverse.io by @alexroumi */
 .btn {
     padding: 5px 10px;

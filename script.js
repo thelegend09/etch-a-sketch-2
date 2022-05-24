@@ -1,33 +1,50 @@
-let PenColorCurrent = "#333"
-let PenColorPrevious = "#333"
-let PenColorTwiceRemoved = "#333"
-
-
 // main
 const main = document.querySelector("main");
-const gridContainer = document.querySelector(".grid-container");
 
 
-// SET PEN COLORS
-// https://developer.mozilla.org/en-US/docs/web/api/window/getcomputedstyle
-// const penColorArray = [ "#586ba4", "#324376", "#f5dd90", "#f68e5f", "#f76c5e", 
-//  "#b9e3c6", "#59c9a5", "#d81e5b", "#23395b", "#fffd98"];
+
+
+// INITIALIZE COLORS
+let PenColorCurrent = "#000"
+let PenColorPrevious = "#000"
+let PenColorTwiceRemoved = "#000"
+
+
+
+// SET PEN COLORS (https://developer.mozilla.org/en-US/docs/web/api/window/getcomputedstyle)
 
 const penColors = Array.from(document.querySelectorAll(".pen-color"));
+const iconTwiceRemovedColor = document.querySelector(".twice-removed-color");
+const iconPreviousColor = document.querySelector(".previous-color");
 
+
+// What happens when I click on a Pen color
 penColors.forEach(penColor => penColor.addEventListener("click", () => {
     let actualBackgroundColor = window.getComputedStyle(penColor);
-    currentPenColor = actualBackgroundColor.getPropertyValue("color");
-    // main.style.backgroundColor = currentPenColor;
+    colorHistory();
+    PenColorCurrent = actualBackgroundColor.getPropertyValue("color");
+    console.log(currentPenColor);
 
 }));
+
+// Make changes to the modifier keys section (if they not greyed out)
+function colorHistory() {
+    if (!(modifierKeysSection.classList.contains("greyed-out"))) {
+        PenColorTwiceRemoved = PenColorPrevious;
+        PenColorPrevious = PenColorCurrent;
+        iconPreviousColor.style.color = PenColorPrevious;
+        iconTwiceRemovedColor.style.color = PenColorTwiceRemoved;
+    }
+
+};
 
 
 
 //  SET GRID COLORS
-
 const gridColors = Array.from(document.querySelectorAll(".grid-color"));
+const gridContainer = document.querySelector(".grid-container");
 
+// What happens when I click on a Grid color
 gridColors.forEach(gridColor => gridColor.addEventListener("click", () => {
     let actualBackgroundColor = window.getComputedStyle(gridColor);
     gridContainer.style.backgroundColor = actualBackgroundColor.getPropertyValue("color");
@@ -36,37 +53,97 @@ gridColors.forEach(gridColor => gridColor.addEventListener("click", () => {
 
 
 // MODIFIER KEYS BUTTONS
-
 const toggleModifierKeys = document.querySelector(".mod-keys");
 const modifierKeysSection = document.querySelector(".modifier-keys-section");
 
+
 toggleModifierKeys.addEventListener("click", () => {
+    iconPreviousColor.style.color = "#808080"
+    iconTwiceRemovedColor.style.color = "#808080"
     modifierKeysSection.classList.toggle("greyed-out")
 
 });
 
-// On mouseover, add a new class to the square
+
+// SLIDER (https://www.w3schools.com/howto/howto_js_rangeslider.asp)
+var slider = document.getElementById("myRange");
+// var output = document.getElementById("demo");
+
+buildSquares(slider.value)
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function () {
+    removeLastChild(gridContainer);
+    buildSquares(this.value);
+}
+
+function removeLastChild(myNode) {
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.lastChild);
+    }
+
+}
+
+
+
+
+// DRAWING 
+
+
+
+function buildSquares(squareNumber) {
+    if (squareNumber > 100) {
+        alert("Try something lower than 100.")
+        numberOfSquares = prompt("How many squares do you want?");
+        buildSquares(numberOfSquares);
+        return
+    }
+
+    squaredSquareNumber = squareNumber ** 2
+
+    for (let x = 0; x < squaredSquareNumber; x++) {
+        const gridElement = document.createElement('div');
+        gridContainer.appendChild(gridElement);
+        gridElement.classList.add("grid-item");
+    }
+
+    gridContainer.style.gridTemplateColumns = "repeat(" + squareNumber + ", 1fr)";
+
+    mouseoverMagic();
+}
+
+
+
+
 function mouseoverMagic() {
     const items = Array.from(document.querySelectorAll('.grid-item'));
 
     items.forEach(item => item.addEventListener('mouseover', () => {
-
         if (isModKeysActive = true) {
             if (window.event.ctrlKey) {
-                item.classList.remove("colorItRed");
-                item.classList.remove("colorItYellow");
-                item.classList.add("colorItBlue");
+                item.style.backgroundColor = PenColorPrevious;
             } else if (window.event.shiftKey) {
-                item.classList.add("colorItRed")
-                item.classList.remove("colorItYellow");
-                item.classList.remove("colorItBlue");
+                item.style.backgroundColor = PenColorTwiceRemoved;
             } else {
-                item.classList.add("colorItYellow")
-                item.classList.remove("colorItRed");
-                item.classList.remove("colorItBlue");
+                item.style.backgroundColor = PenColorCurrent;
             }
         }
-
+        else {
+            item.style.backgroundColor = PenColorCurrent;
+        }
 
     }));
+}
+
+
+
+// GET RANDOM COLOR
+//  get random number 
+function random(min, max) {
+    const num = Math.floor(Math.random() * (max - min)) + min;
+    return num;
+}
+
+function randomColor() {
+    return 'rgb(' + random(0, 255) + ', ' + random(0, 255) + ', ' + random(0, 255) + ')';
 }
