@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/e139444c6d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="node_modules/@r-tek/colr_pickr/build/colr_pickr.min.css" />
+    <script src="node_modules/@r-tek/colr_pickr/build/colr_pickr.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Roboto+Flex:opsz,wght@8..144,200;8..144,700;8..144,1000&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=IBM+Plex+Mono:wght@100&family=Roboto+Flex:opsz,wght@8..144,200;8..144,700;8..144,1000&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -21,24 +25,26 @@
             <div class="pen-section">
                 <h1>Pen</h1>
                 <ul>
-                    <li class="pen-color pen-color-1"><i class="fa-solid fa-circle"></i></li>
+                    <li id="p2" class="pen-color pen-color-1"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-2"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-3"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-4"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-5"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-6"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-7"><i class="fa-solid fa-circle"></i></li>
-                    <li class="pen-color color-picker"><i class="fa-regular fa-circle"></i></li>
+                    <li class="color-picker"><i class="fa-regular fa-circle"></i>
+                    </li>
+
                 </ul>
-                
+
                 <button class="btn">Use random color</button>
             </div>
             <div class="grid-section">
                 <h1>Grid</h1>
                 <ul>
-                    <li class="grid-color-1"><i class="fa-solid fa-square"></i></li>
-                    <li class="grid-color-2"><i class="fa-solid fa-square"></i></li>
-                    <li class="grid-color-3"><i class="fa-solid fa-square"></i></li>
+                    <li class="grid-color grid-color-1"><i class="fa-solid fa-square"></i></li>
+                    <li class="grid-color grid-color-2"><i class="fa-solid fa-square"></i></li>
+                    <li class="grid-color grid-color-3"><i class="fa-solid fa-square"></i></li>
                     <li class="color-picker"><i class="fa-regular fa-square"></i></li>
                 </ul>
             </div>
@@ -55,6 +61,7 @@
         </div>
 
         <div class="grid-container">
+
             <p class="huge-title">etch a sketch!</p>
             <p class="sub-title">Click to start</p>
         </div>
