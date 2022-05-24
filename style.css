@@ -39,17 +39,18 @@ h1 {
 
 
 
-.sidebar ul {
+.sidebar .pen-section ul,
+.sidebar .grid-section ul {
     list-style-type: none;
     padding: 0 0 0 0px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     max-width: 150px;
     margin-bottom: 0;
+    font-size: 22px;
 }
 
 .sidebar li {
-    font-size: 22px;
     padding-bottom: 15px;
 }
 
@@ -59,10 +60,18 @@ h1 {
 }
 
 
-.modifier-keys-section li {
+.modifier-keys-section ul {
     font-size: 12px;
-    /* display: inline; */
+    display: grid;
+    list-style-type: none;
+    padding: 0 0 0 0px;
+    grid-template-columns: repeat(2, 1fr);
     /* grid-column: 3; */
+}
+
+/* For when the modifier keys are inactive */
+.greyed-out {
+    color: grey
 }
 
 .grid-container .huge-title {
@@ -92,20 +101,17 @@ h1 {
 .pen-color-6 {color: #f5dd90;}
 .pen-color-7 {color: #3DA35D;}
 
-
-.grid-color-1 {
-    color: #273043;
-}
-
-.grid-color-2 {
-    color: #371E30;
-}
-
-.grid-color-3 {
-    color: #134611;
-}
+.grid-color-1 {color: #273043;}
+.grid-color-2 {color: #371E30;}
+.grid-color-3 {color: #134611;}
 
 
+
+
+/* .modifier-keys-section {
+    display: inline;
+    padding-right: 50px;
+} */
 
 /* button */
 /* From uiverse.io by @alexroumi */

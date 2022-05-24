@@ -1,9 +1,10 @@
-
+let PenColorCurrent = "#333"
+let PenColorPrevious = "#333"
+let PenColorTwiceRemoved = "#333"
 
 
 // main
 const main = document.querySelector("main");
-
 const gridContainer = document.querySelector(".grid-container");
 
 
@@ -18,13 +19,14 @@ penColors.forEach(penColor => penColor.addEventListener("click", () => {
     let actualBackgroundColor = window.getComputedStyle(penColor);
     currentPenColor = actualBackgroundColor.getPropertyValue("color");
     // main.style.backgroundColor = currentPenColor;
-        
+
 }));
 
 
 
 //  SET GRID COLORS
-const gridColors  = Array.from(document.querySelectorAll(".grid-color"));
+
+const gridColors = Array.from(document.querySelectorAll(".grid-color"));
 
 gridColors.forEach(gridColor => gridColor.addEventListener("click", () => {
     let actualBackgroundColor = window.getComputedStyle(gridColor);
@@ -33,3 +35,38 @@ gridColors.forEach(gridColor => gridColor.addEventListener("click", () => {
 
 
 
+// MODIFIER KEYS BUTTONS
+
+const toggleModifierKeys = document.querySelector(".mod-keys");
+const modifierKeysSection = document.querySelector(".modifier-keys-section");
+
+toggleModifierKeys.addEventListener("click", () => {
+    modifierKeysSection.classList.toggle("greyed-out")
+
+});
+
+// On mouseover, add a new class to the square
+function mouseoverMagic() {
+    const items = Array.from(document.querySelectorAll('.grid-item'));
+
+    items.forEach(item => item.addEventListener('mouseover', () => {
+
+        if (isModKeysActive = true) {
+            if (window.event.ctrlKey) {
+                item.classList.remove("colorItRed");
+                item.classList.remove("colorItYellow");
+                item.classList.add("colorItBlue");
+            } else if (window.event.shiftKey) {
+                item.classList.add("colorItRed")
+                item.classList.remove("colorItYellow");
+                item.classList.remove("colorItBlue");
+            } else {
+                item.classList.add("colorItYellow")
+                item.classList.remove("colorItRed");
+                item.classList.remove("colorItBlue");
+            }
+        }
+
+
+    }));
+}
