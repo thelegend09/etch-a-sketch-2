@@ -1,5 +1,5 @@
 :root {
-    --turquoise-green: #b9e3c6ff;
+    --turquoise-green: hsl(139, 43%, 81%);
     --ocean-green: #59c9a5ff;
     --ruby: #d81e5bff;
     --prussian-blue: #23395bff;
@@ -12,10 +12,19 @@
 }
 
 main {
-    height: 100vh;
-    display:flex;
-    justify-content: space-around;
+    height: 98vh;
+    /* display:flex; */
+    justify-content: center;
     align-items: center;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -23,12 +32,21 @@ body {
     color: rgb(0, 0, 0);
 }
 
+/* grid-row-start / grid-column-start / grid-row-end / grid-column-end. */
+.grid-container {
+    grid-area: 1 / 4 / 1 / 7;
+}
+
 .sidebar {
+    grid-area: 1 / 1 / 1 / 5;
     padding-left: 15vw;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     max-width: 200px;
-    gap: 20px
+    height: 80vh;
+    gap: 20px;
+    padding-right:250px;
 }
 
 h1 {
@@ -40,7 +58,10 @@ h1 {
     /* text-decoration: underline; */
 }
 
-
+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
 
 .sidebar .pen-section ul,
 .sidebar .grid-section ul {
@@ -79,7 +100,7 @@ h1 {
 
 .grid-container .huge-title {
     font-size: 50px;
-    
+
     margin-bottom: 0px;
     font-family: "Grape Nuts";
 
@@ -97,28 +118,23 @@ h1 {
 
 .grid-container {
     display: grid;
-    width: 600px;
-    height: 600px;
+    width: 80vh;
+    height: 80vh;
     background-color: black;
     margin: 0 auto;
     padding: 0;
-    outline: 1px solid black;
-    /* grid-template-columns: "auto"; */
+    outline: 50px solid orangered;
+    
 }
 
-/* .container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-} */
 
 
 
 
 /* colors */
 .grid-item:hover {
-    background-color: #B4656F;
+    background-color: black;
+    background-color: var(--grid-item-hover-color)
 }
 
 .grid-item {
@@ -132,17 +148,47 @@ h1 {
 /* #586ba4, #324376, #f5dd90, #f68e5f, #f76c5e */
 /*  #b9e3c6, #59c9a5, #d81e5b, #23395b, #fffd98 */
 
-.pen-color-1 {color: #59c9a5;}
-.pen-color-2 {color: #d81e5b;}
-.pen-color-3 {color: #f68e5f;}
-.pen-color-4 {color: #586ba4;}
-.pen-color-5 {color: #b9e3c6;}
-.pen-color-6 {color: #f5dd90;}
-.pen-color-7 {color: #3DA35D;}
+.pen-color-1 {
+    color: #59c9a5;
+}
 
-.grid-color-1 {color: #273043;}
-.grid-color-2 {color: #371E30;}
-.grid-color-3 {color: #134611;}
+.pen-color-2 {
+    color: #d81e5b;
+}
+
+.pen-color-3 {
+    color: #f68e5f;
+}
+
+.pen-color-4 {
+    color: #586ba4;
+}
+
+.pen-color-5 {
+    color: #b9e3c6;
+}
+
+.pen-color-6 {
+    color: #f5dd90;
+}
+
+.pen-color-7 {
+    color: #3DA35D;
+}
+
+
+.grid-color-1 {
+    color: #273043;
+}
+
+.grid-color-2 {
+    color: #371E30;
+}
+
+.grid-color-3 {
+    color: #134611;
+}
+
 
 
 
@@ -155,9 +201,9 @@ h1 {
 /* https://www.w3schools.com/howto/howto_js_rangeslider.asp */
 .slidecontainer {
     width: 70%;
-  }
-  
-  .slider {
+}
+
+.slider {
     -webkit-appearance: none;
     width: 100%;
     height: 8px;
@@ -167,13 +213,13 @@ h1 {
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
-  }
-  
-  .slider:hover {
+}
+
+.slider:hover {
     opacity: 1;
-  }
-  
-  .slider::-webkit-slider-thumb {
+}
+
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 15px;
@@ -181,15 +227,15 @@ h1 {
     border-radius: 25%;
     background: var(--ocean-green);
     cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
+}
+
+.slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 25%;
     background: #04AA6D;
     cursor: pointer;
-  }
+}
 
 /* BUTTON */
 /* From uiverse.io by @alexroumi */

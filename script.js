@@ -6,48 +6,73 @@ const main = document.querySelector("main");
 
 // INITIALIZE COLORS
 let PenColorCurrent = "#000"
-let PenColorPrevious = "#000"
-let PenColorTwiceRemoved = "#000"
+let PenColorCtrl = "#000"
+let PenColorShift = "#000"
 
 
 
 // SET PEN COLORS (https://developer.mozilla.org/en-US/docs/web/api/window/getcomputedstyle)
 
 const penColors = Array.from(document.querySelectorAll(".pen-color"));
-const iconTwiceRemovedColor = document.querySelector(".twice-removed-color");
-const iconPreviousColor = document.querySelector(".previous-color");
+const iconPenColorShift = document.querySelector(".pen-color-shift");
+const iconPenColorCtrl = document.querySelector(".pen-color-ctrl");
+
 
 
 // What happens when I click on a Pen color
 penColors.forEach(penColor => penColor.addEventListener("click", () => {
     let actualBackgroundColor = window.getComputedStyle(penColor);
-    colorHistory();
-    PenColorCurrent = actualBackgroundColor.getPropertyValue("color");
-    console.log(currentPenColor);
+
+    if ((window.event.ctrlKey) && (!(modifierKeysSection.classList.contains("greyed-out")))) {
+        PenColorCtrl = actualBackgroundColor.getPropertyValue("color");
+        iconPenColorCtrl.style.color = PenColorCtrl;
+
+    } else if ((window.event.shiftKey) && (!(modifierKeysSection.classList.contains("greyed-out")))) {
+        PenColorShift = actualBackgroundColor.getPropertyValue("color");
+        iconPenColorShift.style.color = PenColorShift;
+    } else if (window.event.altKey) {
+        
+    }
+    
+    else { 
+        PenColorCurrent = actualBackgroundColor.getPropertyValue("color");
+        gridContainer.style.outlineColor = PenColorCurrent;
+    }
+
 
 }));
 
 // Make changes to the modifier keys section (if they not greyed out)
 function colorHistory() {
     if (!(modifierKeysSection.classList.contains("greyed-out"))) {
-        PenColorTwiceRemoved = PenColorPrevious;
-        PenColorPrevious = PenColorCurrent;
-        iconPreviousColor.style.color = PenColorPrevious;
-        iconTwiceRemovedColor.style.color = PenColorTwiceRemoved;
+        PenColorShift = PenColorCtrl;
+        PenColorCtrl = PenColorCurrent;
+
+
     }
 
 };
 
-
+// Make the hover color the same as the PenColorCurrent
+// https://codepen.io/ybentz/pen/RwPoeqb
 
 //  SET GRID COLORS
 const gridColors = Array.from(document.querySelectorAll(".grid-color"));
 const gridContainer = document.querySelector(".grid-container");
+const gridItems = Array.from(document.querySelectorAll(".grid-item"))
+
+
 
 // What happens when I click on a Grid color
 gridColors.forEach(gridColor => gridColor.addEventListener("click", () => {
-    let actualBackgroundColor = window.getComputedStyle(gridColor);
-    gridContainer.style.backgroundColor = actualBackgroundColor.getPropertyValue("color");
+    let newBackgroundColor = window.getComputedStyle(gridColor);
+    newBackgroundColor = newBackgroundColor.getPropertyValue("color");
+
+    gridItems.forEach(gridItem => gridItem.style.backgroundColor = newBackgroundColor)
+
+
+
+    // gridContainer.style.backgroundColor = 
 }));
 
 
@@ -58,8 +83,8 @@ const modifierKeysSection = document.querySelector(".modifier-keys-section");
 
 
 toggleModifierKeys.addEventListener("click", () => {
-    iconPreviousColor.style.color = "#808080"
-    iconTwiceRemovedColor.style.color = "#808080"
+    iconPenColorCtrl.style.color = "#808080"
+    iconPenColorShift.style.color = "#808080"
     modifierKeysSection.classList.toggle("greyed-out")
 
 });
@@ -88,9 +113,6 @@ function removeLastChild(myNode) {
 
 
 // DRAWING 
-
-
-
 function buildSquares(squareNumber) {
     if (squareNumber > 100) {
         alert("Try something lower than 100.")
@@ -112,23 +134,23 @@ function buildSquares(squareNumber) {
     mouseoverMagic();
 }
 
+const backToWhite = document.querySelector("color-picker")
 
 
 
 function mouseoverMagic() {
     const items = Array.from(document.querySelectorAll('.grid-item'));
 
-    items.forEach(item => item.addEventListener('mouseover', () => {
-        if (isModKeysActive = true) {
+    items.forEach(item => item.addEventListener("mouseover", () => {
+        if (!(modifierKeysSection.classList.contains("greyed-out"))) {
             if (window.event.ctrlKey) {
-                item.style.backgroundColor = PenColorPrevious;
+                item.style.backgroundColor = PenColorCtrl;
             } else if (window.event.shiftKey) {
-                item.style.backgroundColor = PenColorTwiceRemoved;
+                item.style.backgroundColor = PenColorShift;
             } else {
                 item.style.backgroundColor = PenColorCurrent;
             }
-        }
-        else {
+        } else {
             item.style.backgroundColor = PenColorCurrent;
         }
 
@@ -139,11 +161,30 @@ function mouseoverMagic() {
 
 // GET RANDOM COLOR
 //  get random number 
+
+const btnRandom = document.querySelector(".random-color")
+
+btnRandom.addEventListener("click", () => {
+    let randomColor = getRandomColor();
+
+    if ((window.event.ctrlKey) && (!(modifierKeysSection.classList.contains("greyed-out")))) {
+        PenColorCtrl = randomColor
+        iconPenColorCtrl.style.color = PenColorCtrl;
+
+    } else if ((window.event.shiftKey) && (!(modifierKeysSection.classList.contains("greyed-out")))) {
+        PenColorShift = randomColor
+        iconPenColorShift.style.color = PenColorShift;
+    } else {
+        PenColorCurrent = randomColor
+        gridContainer.style.outlineColor = PenColorCurrent;
+    }
+});
+
 function random(min, max) {
     const num = Math.floor(Math.random() * (max - min)) + min;
     return num;
 }
 
-function randomColor() {
+function getRandomColor() {
     return 'rgb(' + random(0, 255) + ', ' + random(0, 255) + ', ' + random(0, 255) + ')';
 }
