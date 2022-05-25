@@ -10,11 +10,8 @@ This is the "Etch-a-Sketch" project assigment from the Foundation program of The
 - [x] Toggle shortcuts
 - [x] Change grid size
 - [x] Nice UI
-- [x] Rickroll (try middle clicking somewhere on the page)
-- [ ] Change grid color
-- [ ] Have a color picker
-- [ ] Etch when you click (and not mouseover)
-- [ ] Shuffle color palette
+- [x] Rickroll (try middle clicking somewhere)
+- [x] Change grid color
 
 
 ## What I learned
@@ -36,3 +33,12 @@ console.log(realColor.getPropertyValue("color"));
 // Result = "rgb(0, 0, 255)"
 ```
 - I learned how to toggle classes (for the modifier keys)
+- I learned how to generate colors at random
+- I learned about CSS transitions
+- I learned how to use modifier keys during clicks in Event listeners.
+
+
+## What I need to work on
+- I need to really master arrow functions
+- I need to commit more often
+- I need to make more meaningful commit messages
