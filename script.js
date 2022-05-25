@@ -2,14 +2,25 @@
 const main = document.querySelector("main");
 const body = document.querySelector("body")
 
-// // RICKROLL ON MIDDLE CLICK ANYWHERE
-// body.addEventListener("auxclick", () => {
-//     window.onmousedown = (e) => {
-//     if (e.button === 1) {
-//       window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-//     }
-//   }
-// });
+// RICKROLL ON MIDDLE CLICK ANYWHERE
+body.addEventListener("auxclick", () => {
+    window.onmousedown = (e) => {
+        if (e.button === 1) {
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+        }
+    }
+});
+
+
+// MAKE INITIAL ETCH A SKETCH TITLE DISAPPEAR
+const divToDisappear = document.querySelector(".div-to-disappear")
+
+divToDisappear.addEventListener("click", () => {
+    divToDisappear.setAttribute("style", "display:none")
+    buildSquares(50)
+}, {
+    once: true
+});
 
 
 // INITIALIZE COLORS
@@ -18,8 +29,27 @@ let PenColorCtrl = "#000"
 let PenColorShift = "#000"
 
 
+const penWhite = document.querySelector(".pen-color-white")
+penWhite.addEventListener("click", () => {
+    PenColorCurrent = gridCurrentColor;
+});
+
+const reset = document.querySelector(".reset");
+
+reset.addEventListener("click", () => {
+    removeLastChild(gridContainer);
+    buildSquares(sliderCurrentValue);
+    // alert(sliderCurrentValue)
+});
 
 
+const gridWhite = document.querySelector(".grid-color-white")
+
+gridWhite.addEventListener("click", () => {
+    gridCurrentColor = "#fff";
+    gridContainer.style.backgroundColor = gridCurrentColor
+    // alert("this works");
+});
 
 // SET PEN COLORS (https://developer.mozilla.org/en-US/docs/web/api/window/getcomputedstyle)
 
@@ -32,7 +62,6 @@ const iconPenColorCtrl = document.querySelector(".pen-color-ctrl");
 // What happens when I click on a Pen color
 penColors.forEach(penColor => penColor.addEventListener("click", () => {
     let actualBackgroundColor = window.getComputedStyle(penColor);
-
     if ((window.event.ctrlKey) && (!(modifierKeysSection.classList.contains("greyed-out")))) {
         PenColorCtrl = actualBackgroundColor.getPropertyValue("color");
         iconPenColorCtrl.style.color = PenColorCtrl;
@@ -41,10 +70,8 @@ penColors.forEach(penColor => penColor.addEventListener("click", () => {
         PenColorShift = actualBackgroundColor.getPropertyValue("color");
         iconPenColorShift.style.color = PenColorShift;
     } else if (window.event.altKey) {
-        
-    }
-    
-    else { 
+
+    } else {
         PenColorCurrent = actualBackgroundColor.getPropertyValue("color");
         gridContainer.style.outlineColor = PenColorCurrent;
     }
@@ -57,8 +84,6 @@ function colorHistory() {
     if (!(modifierKeysSection.classList.contains("greyed-out"))) {
         PenColorShift = PenColorCtrl;
         PenColorCtrl = PenColorCurrent;
-
-
     }
 
 };
@@ -72,17 +97,15 @@ const gridContainer = document.querySelector(".grid-container");
 const gridItems = Array.from(document.querySelectorAll(".grid-item"))
 
 
+let gridCurrentColor = "#fff"
 
 // What happens when I click on a Grid color
 gridColors.forEach(gridColor => gridColor.addEventListener("click", () => {
     let newBackgroundColor = window.getComputedStyle(gridColor);
-    newBackgroundColor = newBackgroundColor.getPropertyValue("color");
+    // alert( newBackgroundColor.getPropertyValue("color"));
+    gridContainer.style.backgroundColor = newBackgroundColor.getPropertyValue("color")
+    gridCurrentColor = newBackgroundColor.getPropertyValue("color")
 
-    gridItems.forEach(gridItem => gridItem.style.backgroundColor = newBackgroundColor)
-
-
-
-    // gridContainer.style.backgroundColor = 
 }));
 
 
@@ -105,32 +128,27 @@ var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
 
 
+let sliderCurrentValue = 50;
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function () {
     removeLastChild(gridContainer);
+    sliderCurrentValue = this.value;
     buildSquares(this.value);
-}
+};
 
 function removeLastChild(myNode) {
     while (myNode.firstChild) {
         myNode.removeChild(myNode.lastChild);
     }
 
-}
+};
 
 
 
 
 // DRAWING 
 function buildSquares(squareNumber) {
-    if (squareNumber > 100) {
-        alert("Try something lower than 100.")
-        numberOfSquares = prompt("How many squares do you want?");
-        buildSquares(numberOfSquares);
-        return
-    }
-
     squaredSquareNumber = squareNumber ** 2
 
     for (let x = 0; x < squaredSquareNumber; x++) {
@@ -144,9 +162,7 @@ function buildSquares(squareNumber) {
     mouseoverMagic();
 }
 
-const backToWhite = document.querySelector("color-picker")
-
-
+// const backToWhite = document.querySelector("color-picker")
 
 function mouseoverMagic() {
     const items = Array.from(document.querySelectorAll('.grid-item'));
@@ -170,7 +186,7 @@ function mouseoverMagic() {
 
 
 // GET RANDOM COLOR
-//  get random number 
+//  get random color for pen 
 
 const btnRandom = document.querySelector(".random-color")
 
@@ -189,6 +205,19 @@ btnRandom.addEventListener("click", () => {
         gridContainer.style.outlineColor = PenColorCurrent;
     }
 });
+
+
+// get random color for grid
+
+const btnRandom2 = document.querySelector(".random-color-2")
+
+btnRandom2.addEventListener("click", () => {
+    let gridCurrentColor = getRandomColor()
+    gridContainer.style.backgroundColor = gridCurrentColor
+});
+
+
+
 
 function random(min, max) {
     const num = Math.floor(Math.random() * (max - min)) + min;

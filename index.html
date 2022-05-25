@@ -8,9 +8,14 @@
     <title>Etchin' a-sketchin'</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+
+    <!-- color picker -->
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro"></script>
+
+    <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e139444c6d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="node_modules/@r-tek/colr_pickr/build/colr_pickr.min.css" />
-    <script src="node_modules/@r-tek/colr_pickr/build/colr_pickr.min.js"></script>
+
+    <!-- custome fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -22,7 +27,13 @@
 
     <main>
         <div class="sidebar">
-            <h2>Settings</h2>
+            <h2>Settings <span title="Reset the drawing board">
+                <svg class="reset"  width="24" height="24">
+                    <path fill="none" d="M0 0h24v24H0z" />
+                    <path title="Reset the drawing board"
+                        d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm4.82-4.924a7 7 0 1 0-1.852 1.266l-.975-1.755A5 5 0 1 1 17 12h-3l2.82 5.076z" />
+                    </svg>
+            </span> </h2>
             <div class="pen-section">
                 <h1>Pen</h1>
                 <ul>
@@ -33,7 +44,8 @@
                     <li class="pen-color pen-color-5"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-6"><i class="fa-solid fa-circle"></i></li>
                     <li class="pen-color pen-color-7"><i class="fa-solid fa-circle"></i></li>
-                    <li class="color-picker-1"><i class="fa-regular fa-circle"></i>
+                    <li title="This is the eraser" class="pen-color-white"><i class="fa-regular fa-circle"></i>
+
                     </li>
 
                 </ul>
@@ -46,33 +58,39 @@
                     <li class="grid-color grid-color-1"><i class="fa-solid fa-square"></i></li>
                     <li class="grid-color grid-color-2"><i class="fa-solid fa-square"></i></li>
                     <li class="grid-color grid-color-3"><i class="fa-solid fa-square"></i></li>
-                    <li class="color-picker-2"><i class="fa-regular fa-square"></i></li>
+                    <li class="grid-color-white"><i class="fa-regular fa-square"></i></li>
                 </ul>
+                <button class="btn random-color-2">Use random color</button>
+
             </div>
             <div class="slidecontainer">
                 <h1>Grid size</h1>
                 <input type="range" min="4" max="100" value="50" class="slider" id="myRange">
-              </div>
-            
+            </div>
+
             <div class="modifier-keys-section greyed-out">
                 <h1>Modifier Keys</h1>
                 <p>Use the modifier while clicking on the "Pen" colors to load the colors here.</p>
-                                <ul>
-                    <li>Shift: <i class="pen-color-shift fa-solid fa-circle"></i></li>
-                    <li>Control: <i class="pen-color-ctrl fa-solid fa-circle"></i></li>
+                <ul>
+                    <li>Shift: <i class="pen-color-shift fa-solid fa-square-full"></i></li>
+                    <li>Control: <i class="pen-color-ctrl fa-solid fa-square-full"></i></li>
                 </ul>
                 <button class="btn mod-keys">Toggle modifier keys</button>
             </div>
-            <div class="copyright">© Olivier Legendre</div>
+            <div class="year-copyright"> <a href="https://github.com/thelegend09/etch-a-sketch-2/"> © 2021 <span
+                        class="copyright">Olivier Legendre</span></a></div>
         </div>
 
         <div class="grid-container">
 
-            <div style="display:none" class="div-to-disappear">
-                <p class="huge-title text-to-disappear">etch a sketch!</p>
-                <p class="sub-title text-to-disappear">Click to start</p>
-            </div>         
+            <div class="div-to-disappear">
+                <p class="huge-title text-to-disappear">etch a sketch!
+                    <span class="sub-title">Click to start</span>
+                </p>
+
+            </div>
         </div>
     </main>
 </body>
+
 </html>

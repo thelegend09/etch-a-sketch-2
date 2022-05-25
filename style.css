@@ -46,7 +46,7 @@ body {
     max-width: 200px;
     height: 80vh;
     gap: 20px;
-    padding-right:250px;
+    padding-right: 250px;
 }
 
 h1 {
@@ -99,9 +99,9 @@ h2 {
 }
 
 .grid-container .huge-title {
-    font-size: 50px;
-
-    margin-bottom: 0px;
+    font-size: 120px;
+    text-align: center;
+    margin: 0px;
     font-family: "Grape Nuts";
 
 }
@@ -109,8 +109,14 @@ h2 {
 
 .grid-container .sub-title {
     font-size: 20px;
+    font-family: "Roboto Flex";
+    text-align: center;
+    display: block;
     text-transform: uppercase;
 }
+
+
+
 
 .grid-item {
     background-color: white;
@@ -123,31 +129,75 @@ h2 {
     background-color: white;
     margin: 0 auto;
     padding: 0;
-    outline: 50px solid orangered;
-    
+    outline: 50px solid #124559;
+
 }
 
 
 
 
+.div-to-disappear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* https://stackoverflow.com/questions/6008324/fade-effect-on-link-hover */
+    /* First we need to help some browsers along for this to work.
+       Just because a vendor prefix is there, doesn't mean it will
+       work in a browser made by that vendor either, it's just for
+       future-proofing purposes I guess. */
+    -o-transition: .5s;
+    -ms-transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    /* ...and now for the proper property */
+    transition: .5s;
+}
+
+.div-to-disappear:hover {
+    background-color: #d3e2d8;
+    color: #3DA35D;
+}
 
 
 /* colors */
 .grid-item:hover {
     background-color: black;
-    background-color: var(--grid-item-hover-color)
+    /* background-color: var(--grid-item-hover-color) */
 }
 
 .grid-item {
-    background-color: white;
+    background-color: #FFFFFF00;
+}
+
+.year-copyright a {
+    text-decoration: none;
+    color:#212121
+}
+
+.year-copyright {
+    font-size: 11px;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+
+.year-copyright:hover {
+    letter-spacing: 2px;
+    font-weight: 900;
 }
 
 
 
-/* colors */
+svg {
+    float: inline-end;
+    transition: .3ms ease-in-out;
+}
 
-/* #586ba4, #324376, #f5dd90, #f68e5f, #f76c5e */
-/*  #b9e3c6, #59c9a5, #d81e5b, #23395b, #fffd98 */
+svg:hover {
+    opacity: .5;
+}
+
+/* COLORS */
 
 .pen-color-1 {
     color: #59c9a5;
@@ -179,15 +229,15 @@ h2 {
 
 
 .grid-color-1 {
-    color: #273043;
+    color: #F3B700;
 }
 
 .grid-color-2 {
-    color: #371E30;
+    color: #F63E02;
 }
 
 .grid-color-3 {
-    color: #134611;
+    color: #124559;
 }
 
 
@@ -252,7 +302,7 @@ h2 {
     font-size: 12px;
     /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); */
-    transition: all 250ms;
+    transition: all 100ms;
     overflow: hidden;
 }
 
@@ -268,7 +318,7 @@ h2 {
     z-index: -1;
     /* -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
     box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27); */
-    transition: all 250ms
+    transition: all 100ms
 }
 
 .btn:hover {
