@@ -120,12 +120,13 @@ h2 {
     display: grid;
     width: 80vh;
     height: 80vh;
-    background-color: black;
+    background-color: white;
     margin: 0 auto;
     padding: 0;
     outline: 50px solid orangered;
     
 }
+
 
 
 

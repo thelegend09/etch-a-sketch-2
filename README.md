@@ -10,11 +10,11 @@ This is the "Etch-a-Sketch" project assigment from the Foundation program of The
 - [x] Toggle shortcuts
 - [x] Change grid size
 - [x] Nice UI
+- [x] Rickroll (try middle clicking somewhere on the page)
 - [ ] Change grid color
 - [ ] Have a color picker
 - [ ] Etch when you click (and not mouseover)
 - [ ] Shuffle color palette
-- [ ] Rickroll
 
 
 ## What I learned

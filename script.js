@@ -1,13 +1,23 @@
 // main
 const main = document.querySelector("main");
+const body = document.querySelector("body")
 
-
+// // RICKROLL ON MIDDLE CLICK ANYWHERE
+// body.addEventListener("auxclick", () => {
+//     window.onmousedown = (e) => {
+//     if (e.button === 1) {
+//       window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+//     }
+//   }
+// });
 
 
 // INITIALIZE COLORS
 let PenColorCurrent = "#000"
 let PenColorCtrl = "#000"
 let PenColorShift = "#000"
+
+
 
 
 
@@ -94,7 +104,7 @@ toggleModifierKeys.addEventListener("click", () => {
 var slider = document.getElementById("myRange");
 // var output = document.getElementById("demo");
 
-buildSquares(slider.value)
+
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function () {
